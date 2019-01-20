@@ -8,9 +8,9 @@ var orm = {
             return result;
         })
     },
-    insertOne: function(tableInput, burgerName, devoured) {
+    insertOne: function(tableInput, burgerName) {
         var queryString = "INSERT INTO ?? VALUES (?, ?)";
-        connection.query(queryString, [tableInput, burgerName, devoured], function(err, result) {
+        connection.query(queryString, [tableInput, burgerName], function(err, result) {
             if (err) throw err;
             return result;
         })
