@@ -9,11 +9,11 @@ var orm = {
             return callback(err, result);
         })
     },
-    insertOne: function(tableInput, burgerName) {
-        var queryString = "INSERT INTO ?? VALUES (?, ?)";
+    insertOne: function(tableInput, burgerName, callback) {
+        var queryString = "INSERT INTO ?? (burger_name) VALUES (?)";
         connection.query(queryString, [tableInput, burgerName], function(err, result) {
             if (err) throw err;
-            return result;
+            return callback(err, result);
         })
     }
 }

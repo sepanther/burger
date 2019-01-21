@@ -8,8 +8,10 @@ var burger = {
             callback(err, data);
         })
     },
-    insertOne: function(burgerName) {
-        return orm.insertOne("burgers", burgerName);
+    insertOne: function(burgerName, callback) {
+        orm.insertOne("burgers", burgerName, function(err, data) {
+            return callback(err, data);
+        });
     }
 }
 
