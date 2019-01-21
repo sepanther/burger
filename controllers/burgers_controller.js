@@ -5,18 +5,12 @@ var connection = require("../config/connection.js");
 var router = express.Router();
 
 router.get("/", function(req, res) {
-    console.log('hi');
-    connection.query("SELECT * FROM burgers", function(err, data) {
+    burger.selectAll(function(err, data) {
+        console.log("got here")
         if (err) throw err;
-        res.render("index", { burgers: data });
-    })
-    burger.selectAll();
-    // burger.selectAll(function(err, data) {
-    //     if (err) throw err;
-    //     console.log(data);
-    //     res.render(data);
-    //     res.render('index', data);
-    // });
+        console.log("here is the data")
+        res.render('index', { burgers: data });
+    });
 })
 
 module.exports = router;
