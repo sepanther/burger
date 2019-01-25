@@ -24,7 +24,8 @@ router.put("/api/:burgerId", function(req, res) {
     var burgerId = req.params.burgerId
     burger.updateOne(burgerId, function(err, data) {
         if (err) throw err;
-        res.redirect("/")
+        // res.redirect("/")
+        res.json(data);
     })
 })
 
