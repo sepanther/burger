@@ -15,6 +15,13 @@ var orm = {
             if (err) throw err;
             return callback(err, result);
         })
+    },
+    updateOne: function(tableInput, colToUpdate, updateVal, criteriaCol, criteriaVal, callback) {
+        var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+        connection.query(queryString, [tableInput, colToUpdate, updateVal, criteriaCol, criteriaVal], function(err, result) {
+            if (err) throw err;
+            return callback(err, result);
+        })
     }
 }
 

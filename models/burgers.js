@@ -2,9 +2,7 @@ var orm = require("../config/orm.js");
 
 var burger = {
     selectAll: function(callback) {
-        console.log("inside burger.js")
         orm.selectAll("burgers", function(err, data) {
-            console.log("even more inside")
             callback(err, data);
         })
     },
@@ -12,6 +10,11 @@ var burger = {
         orm.insertOne("burgers", burgerName, function(err, data) {
             return callback(err, data);
         });
+    },
+    updateOne: function(burgerId, callback) {
+        orm.updateOne("burgers", "devoured", true, "burgers.id", burgerId, function(err, data) {
+            return callback(err, data);
+        })
     }
 }
 

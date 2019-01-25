@@ -12,10 +12,17 @@ router.get("/", function(req, res) {
 })
 
 router.post("/api/:burgerName", function(req, res) {
-    console.log(req.body);
     var burgerName = req.body.burgerName;
-    console.log("burger name is: " + burgerName);
     burger.insertOne(burgerName, function(err, data) {
+        if (err) throw err;
+        res.redirect("/")
+    })
+})
+
+router.put("/api/:burgerId", function(req, res) {
+    console.log("burgerID: " + req.params.burgerId)
+    var burgerId = req.params.burgerId
+    burger.updateOne(burgerId, function(err, data) {
         if (err) throw err;
         res.redirect("/")
     })
